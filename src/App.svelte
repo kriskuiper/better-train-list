@@ -1,6 +1,6 @@
 <script>
-  import AppHeader from './components/app-header.svelte'
-  import AppFooter from './components/app-footer.svelte'
+  import AppHeader from './components/app-header/app-header.svelte'
+  import AppFooter from './components/app-footer/app-footer.svelte'
 
   export let results
 </script>
