@@ -1,9 +1,16 @@
 <script>
-	export let name;
+  import AppHeader from './components/app-header.svelte'
+  import AppFooter from './components/app-footer.svelte'
+
+  export let results
 </script>
 
-<style lang="scss">
-
+<style>
+   
 </style>
 
-<h1>Better train list</h1>
+<AppHeader />
+<main class="app-home">
+  <p>Here go the results</p>
+</main>
+<AppFooter />
