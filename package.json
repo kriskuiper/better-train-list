@@ -2,6 +2,7 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "devDependencies": {
+    "netlify-lambda": "^1.5.1",
     "npm-run-all": "^4.1.5",
     "rollup": "^1.12.0",
     "rollup-plugin-commonjs": "^10.0.0",
@@ -19,6 +20,8 @@
     "autobuild": "rollup -c -w",
     "dev": "run-p start:dev autobuild",
     "start": "sirv public --single",
-    "start:dev": "sirv public --single --dev"
+    "start:dev": "sirv public --single --dev",
+    "start:lambda": "netlify-lambda serve netlify/functions",
+    "build:lambda": "netlify-lambda build netlify/functions"
   }
 }
