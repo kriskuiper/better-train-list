@@ -54,7 +54,7 @@
   <form action="" class="app-home__search-form">
     <label for="" class="sr-only">Vul de naam van het treinstation in</label>
     <input
-      type="text" 
+      type="search" 
       class="app-home__search-input"
       placeholder="Naam van treinstation"
     >
