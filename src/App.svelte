@@ -1,5 +1,4 @@
 <script>
-  import departures from '../data/fake-departures'
   import nsApiFetch from '../lib/ns-api-fetch'
 
   import AppHeader from './components/app-header/app-header.svelte'
@@ -10,14 +9,57 @@
 <style>
   .app-home {
     flex-grow: 1;
-    padding: 1em;
+    padding: 2rem 1rem;
     color: #000;
+  }
+
+  .app-home__title {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .app-home__search-input {
+    padding: 1rem;
+    border: 0;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    margin-bottom: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .button {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .button--primary {
+    background: #651fff;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .button--secondary {
+    border: 0;
+    color: #651fff;
   }
 </style>
 
 <AppHeader />
 <main class="app-home">
-  <h2>Departing trains:</h2>
-  <DepartureList departures="{departures}" />
+  <h2 class="app-home__title">Op welk treinstation ben je?</h2>
+  <form action="" class="app-home__search-form" >
+    <label for="" class="sr-only">Vul de naam van het treinstation in</label>
+    <input
+      type="text" 
+      class="app-home__search-input"
+      placeholder="Naam van treinstation"
+    >
+    <button class="button button--primary">Zoek treinen</button>
+    <button class="button button--secondary">Gebruik locatie</button>
+  </form>
 </main>
 <AppFooter />
