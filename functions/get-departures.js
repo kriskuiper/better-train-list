@@ -8,6 +8,10 @@ const { NS_BASEURL, NS_API_KEY } = process.env
 exports.handler = async (event) => {
   const { station } = JSON.parse(event.body)
 
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 200, body: 'Only POST method is allowed' }
+  }
+
   return fetch(`${NS_BASEURL}?station=${station}`, { headers: { 'Ocp-Apim-Subscription-Key': NS_API_KEY } })
     .then(res => res.json())
     .then(data => ({
