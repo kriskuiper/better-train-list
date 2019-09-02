@@ -51,7 +51,7 @@
 <AppHeader />
 <main class="app-home">
   <h2 class="app-home__title">Op welk treinstation ben je?</h2>
-  <form action="" class="app-home__search-form" >
+  <form action="" class="app-home__search-form">
     <label for="" class="sr-only">Vul de naam van het treinstation in</label>
     <input
       type="text" 
@@ -59,7 +59,8 @@
       placeholder="Naam van treinstation"
     >
     <button class="button button--primary">Zoek treinen</button>
-    <button class="button button--secondary">Gebruik locatie</button>
+    <button class="button button--secondary" type="button">Gebruik locatie</button>
   </form>
+  <DepartureList /> 
 </main>
 <AppFooter />
