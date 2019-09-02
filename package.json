@@ -24,6 +24,6 @@
     "start": "sirv public --single",
     "start:dev": "sirv public --single --dev",
     "lambda:serve": "netlify-lambda serve functions",
-    "lamda:serve": "netlify-lambda build functions"
+    "lamda:build": "netlify-lambda build functions"
   }
 }
