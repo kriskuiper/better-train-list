@@ -4,6 +4,18 @@
   import AppHeader from './components/app-header/app-header.svelte'
   import AppFooter from './components/app-footer/app-footer.svelte'
   import DepartureList from './components/departure-list/departure-list.svelte'
+
+  let inputValue
+
+  function getDepartures() {
+    fetch('./public/functions/get-departures', { 
+      method: 'POST',
+      body: inputValue
+    })
+      .then(res => {
+        console.log(res.data)
+      })
+  }
 </script>
 
 <style>
@@ -51,16 +63,16 @@
 <AppHeader />
 <main class="app-home">
   <h2 class="app-home__title">Op welk treinstation ben je?</h2>
-  <form action="" class="app-home__search-form">
+  <form action="" class="app-home__search-form" on:submit|preventDefault={getDepartures}>
     <label for="" class="sr-only">Vul de naam van het treinstation in</label>
     <input
-      type="search" 
+      type="search"
       class="app-home__search-input"
+      bind:value={inputValue}
       placeholder="Naam van treinstation"
     >
     <button class="button button--primary">Zoek treinen</button>
     <button class="button button--secondary" type="button">Gebruik locatie</button>
-  </form>
-  <DepartureList /> 
+  </form> 
 </main>
 <AppFooter />
