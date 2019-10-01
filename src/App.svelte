@@ -1,20 +1,27 @@
 <script>
-  import nsApiFetch from '../lib/ns-api-fetch'
-
   import AppHeader from './components/app-header/app-header.svelte'
   import AppFooter from './components/app-footer/app-footer.svelte'
   import DepartureList from './components/departure-list/departure-list.svelte'
 
-  let inputValue
+  let inputValue = ''
+  let departureList = ''
 
   function getDepartures() {
-    fetch('./public/functions/get-departures', { 
+    // @TODO: add real endpoint for production
+    return fetch('http://localhost:9000/get-departures', { 
       method: 'POST',
-      body: inputValue
+      body: JSON.stringify({ station: inputValue }),
     })
-      .then(res => {
-        console.log(res.data)
+      .then(res => res.json())
+      .then(data => setDepartures(data.payload.departures))
+      .catch(error => {
+        console.error(error)
       })
+  }
+
+  function setDepartures(departures) {
+    console.log(departures)
+    departureList = departures
   }
 </script>
 
@@ -27,6 +34,10 @@
 
   .app-home__title {
     font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .app-home__search-form {
     margin-bottom: 1.2rem;
   }
 
@@ -72,7 +83,11 @@
       placeholder="Naam van treinstation"
     >
     <button class="button button--primary">Zoek treinen</button>
-    <button class="button button--secondary" type="button">Gebruik locatie</button>
-  </form> 
+  </form>
+  <ul>
+    { #each departureList as departure, index }
+      <li>{ departure.direction }</li>
+    { /each }
+  </ul>
 </main>
 <AppFooter />
