@@ -17,6 +17,7 @@ exports.handler = async (event) => {
     .then(data => ({
       statusCode: 200,
       headers: {
+        // @TODO: delete these before production
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
       },
