@@ -1,4 +1,6 @@
 <script>
+  import stations from '../public/data/stations/index.json'
+
   import AppHeader from './components/app-header/app-header.svelte'
   import AppFooter from './components/app-footer/app-footer.svelte'
   import DepartureList from './components/departure-list/departure-list.svelte'
@@ -7,10 +9,12 @@
   let departureList = ''
 
   function getDepartures() {
+    const station = stations[inputValue]
+
     // @TODO: add real endpoint for production
     return fetch('http://localhost:9000/get-departures', { 
       method: 'POST',
-      body: JSON.stringify({ station: inputValue }),
+      body: JSON.stringify({ station }),
     })
       .then(res => res.json())
       .then(data => setDepartures(data.payload.departures))
@@ -20,7 +24,6 @@
   }
 
   function setDepartures(departures) {
-    console.log(departures)
     departureList = departures
   }
 </script>
