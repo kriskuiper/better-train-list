@@ -8,8 +8,7 @@
   let inputValue = ''
   let departureList = ''
 
-  function getDepartures() {
-    const station = stations[inputValue]
+  const getDepartures = () => {
 
     // @TODO: add real endpoint for production
     return fetch('http://localhost:9000/get-departures', { 
