@@ -67,11 +67,6 @@
     border-radius: 5px;
     color: white;
   }
-
-  .button--secondary {
-    border: 0;
-    color: #651fff;
-  }
 </style>
 
 <AppHeader />
