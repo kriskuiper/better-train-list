@@ -18,7 +18,7 @@ async function stationsToJson() {
 
     const stationsData = payload.reduce((allStations, currentStation) => {
       if (currentStation.land === 'NL') {
-        allStations[currentStation.namen.lang] = currentStation.code
+        allStations[currentStation.namen.lang.toLowerCase()] = currentStation.code
       }
 
       return allStations
