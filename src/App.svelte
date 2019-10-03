@@ -69,8 +69,9 @@
 <main class="app-home">
   <h2 class="app-home__title">Op welk treinstation ben je?</h2>
   <form action="" class="app-home__search-form" on:submit|preventDefault={getDepartures}>
-    <label for="" class="sr-only">Vul de naam van het treinstation in</label>
+    <label for="app-home__search-input" class="sr-only">Vul de naam van het treinstation in</label>
     <input
+      id="app-home__search-input"
       type="search"
       class="app-home__search-input"
       bind:value={inputValue}
