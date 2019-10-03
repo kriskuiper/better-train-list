@@ -17,14 +17,10 @@
       body: JSON.stringify({ station }),
     })
       .then(res => res.json())
-      .then(data => setDepartures(data.payload.departures))
+      .then(data => departureList = data.payload.departures)
       .catch(error => {
         console.error(error)
       })
-  }
-
-  function setDepartures(departures) {
-    departureList = departures
   }
 </script>
 
