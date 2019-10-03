@@ -82,10 +82,6 @@
     >
     <button class="button button--primary">Zoek treinen</button>
   </form>
-  <ul>
-    { #each departureList as departure, index }
-      <li>{ departure.direction }</li>
-    { /each }
-  </ul>
+  <DepartureList departures={departureList} />
 </main>
 <AppFooter />
