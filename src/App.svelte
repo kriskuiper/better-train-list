@@ -9,6 +9,7 @@
   let departureList = ''
 
   const getDepartures = () => {
+    const station = stations[inputValue.toLowerCase()]
 
     // @TODO: add real endpoint for production
     return fetch('http://localhost:9000/get-departures', { 
