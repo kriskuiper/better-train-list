@@ -2,14 +2,26 @@
   import stations from '../public/data/stations/index.json'
 
   import AppHeader from './components/app-header/app-header.svelte'
-  import AppFooter from './components/app-footer/app-footer.svelte'
+  import AppForm from './components/app-form/app-form.svelte'
   import DepartureList from './components/departure-list/departure-list.svelte'
+  import AppFooter from './components/app-footer/app-footer.svelte'
+  import AppSnackbar from './components/app-snackbar/app-snackbar.svelte'
 
-  let inputValue = ''
   let departureList = ''
+  let appError = ''
+  let snackbar = false
 
-  const getDepartures = () => {
-    const station = stations[inputValue.toLowerCase()]
+  const showSnackbar = () => {
+    snackbar = true
+  }
+
+  const hideSnackbar = () => {
+    snackbar = false
+  }
+
+  const getDepartures = (event) => {
+    const { detail } = event
+    const station = stations[detail.toLowerCase()]
 
     // @TODO: add real endpoint for production
     return fetch('http://localhost:9000/get-departures', { 
@@ -20,6 +32,14 @@
       .then(data => departureList = data.payload.departures)
       .catch(error => {
         console.error(error)
+
+        appError = 'Kan vetrekkende treinen nu niet laden. Probeer het later nog eens.'
+        showSnackbar()
+
+        setTimeout(() => {
+          hideSnackbar()
+          appError = ''
+        }, 3000)
       })
   }
 </script>
@@ -35,50 +55,15 @@
     font-size: 1.4rem;
     margin-bottom: 1.2rem;
   }
-
-  .app-home__search-form {
-    margin-bottom: 1.2rem;
-  }
-
-  .app-home__search-input {
-    padding: 1rem;
-    border: 0;
-    font-size: 1rem;
-    display: block;
-    width: 100%;
-    margin-bottom: 1.2rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-
-  .button {
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    padding: 0.5rem 1rem;
-  }
-
-  .button--primary {
-    background: #651fff;
-    border-radius: 5px;
-    color: white;
-  }
 </style>
 
 <AppHeader />
 <main class="app-home">
   <h2 class="app-home__title">Op welk treinstation ben je?</h2>
-  <form action="" class="app-home__search-form" on:submit|preventDefault={getDepartures}>
-    <label for="app-home__search-input" class="sr-only">Vul de naam van het treinstation in</label>
-    <input
-      id="app-home__search-input"
-      type="search"
-      class="app-home__search-input"
-      bind:value={inputValue}
-      placeholder="Naam van treinstation"
-    >
-    <button class="button button--primary">Zoek treinen</button>
-  </form>
+  <AppForm on:form-submit={getDepartures} />
   <DepartureList departures={departureList} />
+  {#if snackbar}
+    <AppSnackbar message={appError}/>
+  {/if}
 </main>
 <AppFooter />
