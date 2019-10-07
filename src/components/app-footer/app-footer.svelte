@@ -5,5 +5,5 @@
 </style>
 
 <footer class="app-footer">
-    <p>&copy; <a href="github.com/kriskuiper">Kris Kuiper</a></p>
+    <p>Made with ❤️<span class="sr-only">love</span> by <a href="https://github.com/kriskuiper">Kris Kuiper</a></p>
 </footer>
