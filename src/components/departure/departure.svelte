@@ -1,7 +1,7 @@
 <script>
   export let departure
 
-  function formatDateForDeparture() {
+  const formatDateForDeparture = () => {
     const departureTime = new Date(departure.actualDateTime)
     const hours = departureTime.getHours()
     const minutes = departureTime.getMinutes() < 10 ? `0${departureTime.getMinutes()}` : departureTime.getMinutes()
