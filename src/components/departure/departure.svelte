@@ -4,7 +4,9 @@
   const formatDateForDeparture = () => {
     const departureTime = new Date(departure.actualDateTime)
     const hours = departureTime.getHours()
-    const minutes = departureTime.getMinutes() < 10 ? `0${departureTime.getMinutes()}` : departureTime.getMinutes()
+    const minutes = departureTime.getMinutes() < 10 
+      ? `0${departureTime.getMinutes()}` 
+      : departureTime.getMinutes()
 
     return `${hours}:${minutes}`
   }
