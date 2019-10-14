@@ -66,7 +66,7 @@
 
 <li class="departure">
   <header class="departure__header">
-    <p class="departure__time"><span class="sr-only">Vertrekt om:</span>{formatDateForDeparture()} <span class="sr-only">uur</span></p>
+    <p class="departure__time"><span class="sr-only">Vertrekt om:</span> {formatDateForDeparture()} <span class="sr-only">uur</span></p>
     <p class="departure__model">{ departure.product.longCategoryName }</p>
   </header>
   <h3 class="departure__title"><span class="sr-only">Richting</span>{ departure.direction }</h3>
@@ -75,9 +75,9 @@
   </div>
   {#if departure.routeStations}
     <details class="departure__details">
-      <summary class="departure__summary">Details</summary>
+      <summary class="departure__summary">Informatie</summary>
       <h4>Via:</h4>
-      <ol id="route-stations" class="departure__route-stations">
+      <ol class="departure__route-stations">
         {#each departure.routeStations as routeStation}
           <li>{ routeStation.mediumName }</li>
         {/each}
