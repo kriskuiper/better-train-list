@@ -21,9 +21,9 @@
     "sirv-cli": "^0.4.4"
   },
   "scripts": {
-    "build": "rollup -c && npm run lambda:build",
+    "build": "npm run data:stations && rollup -c && npm run lambda:build",
     "autobuild": "rollup -c -w",
-    "dev": "run-p start:dev autobuild",
+    "dev": "npm run data:stations && run-p start:dev autobuild",
     "start": "sirv public --single",
     "start:dev": "sirv public --single --dev",
     "lambda:serve": "netlify-lambda serve functions",
