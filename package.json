@@ -21,13 +21,13 @@
     "sirv-cli": "^0.4.4"
   },
   "scripts": {
-    "build": "rollup -c && lambda:build",
+    "build": "rollup -c && npm run lambda:build",
     "autobuild": "rollup -c -w",
     "dev": "run-p start:dev autobuild",
     "start": "sirv public --single",
     "start:dev": "sirv public --single --dev",
     "lambda:serve": "netlify-lambda serve functions",
-    "lamda:build": "netlify-lambda build functions",
+    "lambda:build": "netlify-lambda build functions",
     "data:stations": "./scripts/stations-to-json.js"
   }
 }
