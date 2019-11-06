@@ -16,11 +16,6 @@ exports.handler = async (event) => {
     .then(res => res.json())
     .then(data => ({
       statusCode: 200,
-      headers: {
-        // @TODO: delete these before production
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-      },
       body: JSON.stringify(data)
     }))
     .catch(error => ({
