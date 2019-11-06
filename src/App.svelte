@@ -23,8 +23,7 @@
     const { detail } = event
     const station = stations[detail.toLowerCase()]
 
-    // @TODO: add real endpoint for production
-    return fetch('http://localhost:9000/get-departures', { 
+    return fetch('/.netlify/functions/get-departures', { 
       method: 'POST',
       body: JSON.stringify({ station }),
     })
