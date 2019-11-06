@@ -10,6 +10,7 @@
   let departureList = ''
   let appError = ''
   let snackbar = false
+  let isLoading = false
 
   const showSnackbar = () => {
     snackbar = true
@@ -22,6 +23,8 @@
   const getDepartures = (event) => {
     const { detail } = event
     const station = stations[detail.toLowerCase()]
+
+    isLoading = true
 
     return fetch('/.netlify/functions/get-departures', { 
       method: 'POST',
@@ -40,6 +43,7 @@
           appError = ''
         }, 3000)
       })
+      .finally(isLoading = false)
   }
 </script>
 
@@ -59,7 +63,7 @@
 <AppHeader />
 <main class="app-home">
   <h2 class="app-home__title">Op welk treinstation ben je?</h2>
-  <AppForm on:form-submit={getDepartures} />
+  <AppForm on:form-submit={getDepartures} isLoading={isLoading} />
   <DepartureList departures={departureList} />
   {#if snackbar}
     <AppSnackbar message={appError}/>

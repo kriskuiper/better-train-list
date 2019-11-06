@@ -4,6 +4,7 @@
 
   const dispatch = createEventDispatcher()
 
+  export let isLoading
   let inputValue = ''
 
   $: filteredStations = () => {
@@ -14,6 +15,12 @@
     }
 
     return []
+  }
+
+  $: buttonText = () => {
+    return !isLoading
+      ? 'Zoek treinen'
+      : 'Wacht even'
   }
 
   const handleFilteredStationClick = (event) => {
@@ -87,5 +94,5 @@
       {/each}
     </ul>
   {/if}
-  <button class="button button--primary">Zoek treinen</button>
+  <button class="button button--primary" disabled={isLoading}>{ buttonText() }</button>
 </form>
